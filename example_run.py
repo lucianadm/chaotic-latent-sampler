@@ -1,17 +1,17 @@
 import numpy as np
 from chaotic_sampler import chaotic_latent_sampler
 
+import numpy as np
+
 # Example: Rössler latent data
 data = np.loadtxt("rossler_trajectory.txt")
 
-samples = chaotic_latent_sampler(
-    data,
-    B=100,
-    B_fine=100,
-    use_simulated_annealing=True,
-    sa_iterations=20,
-    num_rounds=1,
-    mode="multi_seed"
-)
+#Single-seed
+res = chaotic_sampler(data, mode="single")
+XX_single = res["XX"]
 
-print("Generated samples shape:", samples.shape)
+#Multi-seed
+#res = chaotic_sampler(data, mode="multi")
+#SAL2 = res["SAL2"]
+#mat_nueva = np.transpose(SAL2, (1, 2, 0))
+#XX_multi = mat_nueva[:, :, 1]  
